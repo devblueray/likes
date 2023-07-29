@@ -15,7 +15,8 @@ defmodule Likes.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Likes.PubSub},
       # Start the Endpoint (http/https)
-      LikesWeb.Endpoint
+      LikesWeb.Endpoint,
+      {Likes.Queue, 1}
       # Start a worker by calling: Likes.Worker.start_link(arg)
       # {Likes.Worker, arg}
     ]

@@ -1,14 +1,14 @@
 defmodule LikesWeb.LikesLive do
 
   use LikesWeb, :live_view
-  alias Likes.Likes
+
 
   def mount(_,_,socket) do
     if connected?(socket) do
       IO.puts("connected")
-      Likes.subscribe()
+      Likes.Likes.subscribe()
     end
-
+    IO.puts(Likes.Queue.queue())
     {:ok, assign(socket, likes: Likes.Queue.queue())}
   end
 
@@ -24,7 +24,9 @@ defmodule LikesWeb.LikesLive do
 
   def handle_event("like", _, socket) do
     socket = update(socket, :likes, &(&1+1))
-    Likes.broadcast({:like_updates, socket.assigns.likes})
+    Likes.Likes.broadcast({:like_updates, socket.assigns.likes})
+    IO.puts(socket.assigns.likes)
+    Likes.Queue.enqueue(socket.assigns.likes)
     {:noreply, socket}
   end
 
