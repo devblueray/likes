@@ -24,6 +24,7 @@ jobs:
               with:
                 workload_identity_provider: 'projects/77311239361/locations/global/workloadIdentityPools/external-services-pool/providers/github'
                 service_account: 'ghactions@veeps-stg.iam.gserviceaccount.com'
+                token_format: 'access_token'
             - id: 'get-credentials'
               uses: 'google-github-actions/get-gke-credentials@v1'
               with:
