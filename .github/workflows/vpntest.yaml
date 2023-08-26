@@ -1,0 +1,31 @@
+name: Wireguard Test
+on:
+  workflow_dispatch
+jobs:
+    connect-and-execute:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Set up WireGuard
+              uses: egor-tensin/setup-wireguard@v1
+              with:
+                endpoint: 35.209.90.76:51821
+                endpoint_public_key: LoV84Pfphri6V0tcwrrNdRysDwbxxoPsICT7bFN9DXo=
+                ips: 192.168.143.254/24,fd8c:bc10:5021::192.168.143.254/48
+                allowed_ips: 100.64.1.0/24, 34.68.227.123/32
+                private_key: 8BvASQ7pslnu2OLy7H1UzZ9qSp+DsR2QH1j19T9iGV0=
+                preshared_key: rOmqPKUJrQOApcT224ssc3qR05jpjtoocqsyOwVmHZc=
+            - id: 'auth'
+              uses: 'google-github-actions/auth@v1'
+              with:
+                workload_identity_provider: 'projects/77311239361/locations/global/workloadIdentityPools/external-services-pool/providers/github'
+                service_account: 'ghactions@veeps-stg.iam.gserviceaccount.com'
+            - id: 'get-credentials'
+              uses: 'google-github-actions/get-gke-credentials@v1'
+              with:
+                cluster_name: 'develop'
+                location: 'us-central1-c'            
+            - id: 'get-pods'
+              run: 'kubectl get pods'
+
