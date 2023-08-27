@@ -28,10 +28,10 @@ jobs:
                 service_account: 'ghactions@veeps-stg.iam.gserviceaccount.com'
                 token_format: 'access_token'
             - id: 'setup-gcloud'
-                uses: 'google-github-actions/setup-gcloud@v1'
-                with:
-                    version: '363.0.0'
-                    project_id: 'veeps-stg'
+              uses: 'google-github-actions/setup-gcloud@v1'
+              with:
+                version: '363.0.0'
+                project_id: 'veeps-stg'
             - id: 'get-credentials'
               uses: 'google-github-actions/get-gke-credentials@v1'
               with:
@@ -41,9 +41,9 @@ jobs:
               run: 'curl https://api.ipify.org'            
             - id: 'get-pods'
               run: 'kubectl get pods'
-            - id: 'setup helm'
+            - id: 'setup-helm'
               uses: azure/setup-helm@v1
               with:
                 version: 'v3.5.4'
-            - id: 'run helm ls'
-                run: 'helm ls -n develop'
+            - id: 'run-helm-ls'
+              run: 'helm ls -n develop'
