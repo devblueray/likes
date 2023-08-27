@@ -30,7 +30,7 @@ jobs:
               with:
                 cluster_name: 'develop'
                 location: 'us-central1-c'
-            - id: get ip
+            - id: 'get ip'
               run: 'curl https://api.ipify.org'            
             - id: 'get-pods'
               run: 'kubectl get pods'
