@@ -11,7 +11,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - id: 'which-python'
-              run: 'which python'
+              run: 'python --version'
             - id: 'get-orig-ip'
               run: 'curl https://api.ipify.org'    
             - name: Set up WireGuard
