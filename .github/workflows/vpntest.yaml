@@ -32,7 +32,6 @@ jobs:
             - id: 'setup-gcloud'
               uses: 'google-github-actions/setup-gcloud@v1'
               with:
-                version: '363.0.0'
                 project_id: 'veeps-stg'
             - id: 'get-credentials'
               uses: 'google-github-actions/get-gke-credentials@v1'
