@@ -16,7 +16,7 @@ jobs:
                 endpoint: 35.209.90.76:51821
                 endpoint_public_key: LoV84Pfphri6V0tcwrrNdRysDwbxxoPsICT7bFN9DXo=
                 ips: 100.64.1.3/24
-                allowed_ips: 0.0.0.0/0
+                allowed_ips: 64.185.227.156/32, 173.231.16.76/32, 104.237.62.211/32
                 private_key: 8BvASQ7pslnu2OLy7H1UzZ9qSp+DsR2QH1j19T9iGV0=
                 preshared_key: rOmqPKUJrQOApcT224ssc3qR05jpjtoocqsyOwVmHZc=
             - id: 'auth'
