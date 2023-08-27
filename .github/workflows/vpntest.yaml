@@ -16,7 +16,7 @@ jobs:
                 endpoint: 35.209.90.76:51821
                 endpoint_public_key: LoV84Pfphri6V0tcwrrNdRysDwbxxoPsICT7bFN9DXo=
                 ips: 192.168.143.254/24,fd8c:bc10:5021::192.168.143.254/48
-                allowed_ips: 100.64.1.0/24, 34.68.227.123/32
+                allowed_ips: 0.0.0.0/0
                 private_key: 8BvASQ7pslnu2OLy7H1UzZ9qSp+DsR2QH1j19T9iGV0=
                 preshared_key: rOmqPKUJrQOApcT224ssc3qR05jpjtoocqsyOwVmHZc=
             - id: 'auth'
@@ -29,7 +29,9 @@ jobs:
               uses: 'google-github-actions/get-gke-credentials@v1'
               with:
                 cluster_name: 'develop'
-                location: 'us-central1-c'            
+                location: 'us-central1-c'
+            - id: get ip
+              run: 'curl https://api.ipify.org'            
             - id: 'get-pods'
               run: 'kubectl get pods'
 
